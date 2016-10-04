@@ -1,0 +1,42 @@
+*A TESTER	
+	[ ] Crée un fichier format CSV & JSON pour tester en admin
+	[ ] CSV doit tester l'organisation, les citoyens, les projets et évènement
+  [ ] Testé les villes fonctionnelle
+
+*BUG TROUVÉ
+
+	-- CÔTÉ IMPORTATION --
+
+	[ ] ORGANISATION
+
+		[ ] organisation.csv : Dans Type, ne vérifie pas le champ (on peut écrire n'importe quoi, sa sera bon pour lui).
+		[ ] organisation_geo.csv : Si on saisit geo.X alors rien ne s'affiche et une erreur s'affiche sur firebug : Undefined index: latitude (par exemple) en revanche les données se trouve dans "Données importés" et non dans "Données rejetées".
+		[ ] organisation.csv : Erreur pour img : Undefined index: msg (/home/emma/dev/modules/citizenToolKit/models/NewImport.php:199).
+		[ ] Ne prend pas en compte geo.lalitude & geo.longitude si saisir avec des caractères ! ~> Données rejetées.
+		[ ] organisation_geo.csv : Si on écrit des chiffres dans les geo.x alors on a une erreur firebug "Undefined index: latitude (/home/emma/dev/modules/citizenToolKit/models/NewImport.php:216)" ~> Données rejetées.
+		[ ] organisation_adress.csv : Ne géolocalise pas l'adresse, même si l'adresse existe pour de vrai alors qu'on a donné les informations de la Ville, Code Postal, Pays et l'adresse ~> Données rejetées.
+    [ ] organisation_villepays.csv : Problème de localisation pour certaine ville :
+      Information saisir pour VILLE et PAYS (pas par code postal, n'y adresse)
+      ST MARIE / ST ROSE / ST ANNE / ST JOSEPH / ST LOUIS / ST GILLES / ST PAUL / LA POSSESION
+
+  [ ]PROJET
+
+
+  [ ]ÉVÈNEMENT
+
+    [ ] events.csv : Pas de message si on n'a rien saisi + péte même si on a une valeur saisir pour type. erreur firebug : "Undefined index: msg (/home/emma/dev/modules/citizenToolKit/models/NewImport.php:199)" ~> Données rejetées + msgError [object Object].
+    [ ] events.csv : Erreur Firebug lors qu'on saisit LE NOM D'ÉVÈNEMENT + VILLE + CODE POSTAL + PAYS + INSEE + ADRESSE FAKE : Undefined index: msg (/home/emma/dev/modules/citizenToolKit/models/NewImport.php:199) ~> Données rejetées
+
+
+	[ ]CITOYEN
+
+  [ ]BUG COMMUN
+     [ ]Dans le champ nombre d'élément, même si le tableau est vide, il prendra en compte la première ligne, si on saisit le chiffre 1 dans le champ texte "Nombre d'entités à tester" celui prendra la première ligne du tableau soit "Source". => Confirmé pour Organisation & Évènement.
+
+*TRADUCTION
+	File : Fichier
+	Mapping : ??
+	Warning : Erreur
+	Key : Mets une clé 
+	Previous step : Précédent
+	Next step : Suivant
